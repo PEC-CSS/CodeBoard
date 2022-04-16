@@ -1,0 +1,19 @@
+.CodeMirror {
+    height: 600px !important;
+    border-radius: 5px;
+    /* width: 900px; */
+}
+.flex{
+    padding-top: 40px;
+    display: flex;
+}
+.whiteboard{
+    flex: 0.5;
+}
+.editor{
+    flex: 0.5;
+}
+.Dropdown-control{
+    cursor: pointer !important;
+    padding-bottom: 2px !important;
+}
