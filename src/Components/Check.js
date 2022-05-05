@@ -1,15 +1,16 @@
 import React from 'react'
-import {Split} from '@geoffcox/react-splitter'
-
+import ReactMegaMenu from "react-mega-menu"
 function Check() {
   return (
-      <div>
-
-          <Split >
-                <div style = {{border:'1ps solid black'}}>This is one page</div>
-                <div>This is another page</div>
-          </Split>
-      </div>
+    <div>
+      <ReactMegaMenu
+        tolerance={50}      // optional, defaults to 100
+        direction={"LEFT"}  // optional, defaults to "RIGHT", takes in "RIGHT" || "LEFT"
+      // styleConfig={...}   // defaults to an empty object. not recommended to be left blank.
+      // onExit={() => {...}}  // a function to be called when a mouse leaves the container
+      // data={[...]}        // array of data to be rendered
+      />
+    </div>
   )
 }
 
