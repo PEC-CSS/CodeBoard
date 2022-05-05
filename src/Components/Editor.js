@@ -77,62 +77,11 @@ function Editor() {
         }
         let temp = codeRef.current.editor.getValue()
         let code = temp.toString();
-        // var program = {
-        //     script: code,
-        //     language: "cpp",
-        //     versionIndex: "0",
-        //     clientId: "25a6d9ade4b118c2ee302560ff551a0",
-        //     clientSecret: "8642628ec1841cf7220e2327521c20fd9280975554f6fab8e4d8d1454c7b96b"
-        // };
-        // // const options = {
-
-        // };
-        // var data = JSON.stringify({
-        //     "code":{code},
-        //     "language":"cpp",
-        //     "input":"" 
-        // }); 
-        // let res = await fetch("https://codexweb.netlify.app/.netlify/functions/enforceCode", {
-        //     method:'POST', 
-        //     headers:{
-        //         'Content-Type':'application/json',
-        //     },
-        //     data: data, 
-        // })
-
-        // let res = await fetch('https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true&fields=*', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json',
-        //         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
-        //         'X-RapidAPI-Key': '03576719e5msh9509b004bdd31d2p1d37d5jsn4048cf7dd528'
-        //     },
-        //     body: { "language_id": 54, "source_code": { code }, "stdin": "" }
-        // })
-            // .then(response => response.json())
-            // .then(response => console.log(response))
-            // .catch(err => console.error(err));
-        // let res = await fetch("https://api.jdoodle.com/v1/execute", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-
-        //     body: program,
-        // })
-        // const data = await res.JSON();
-        // console.log(res)
-        // fetch(config)
-        //     .then((res)=>{
-        //         console.log(res);   
-        //     }).catch((error)=>{
-        //         console.log(error);
-        //     })
+    
     }
     useEffect(() => {
         const current = codeRef.current.editor.display.wrapper.style.height = '600px';
     }, [])
-    // console.log(document.querySelector('.CodeMirror').style)
     const language = [
         "c++",
         'c',
