@@ -1,0 +1,99 @@
+.CodeMirror {
+  /* height: 600px !important; */
+  border-radius: 5px;
+  resize: vertical;
+
+  /* position: absolute !important; */
+  /* width: 900px; */
+}
+.flex {
+  padding-top: 40px;
+  display: flex;
+}
+.whiteboard {
+  flex: 0.5;
+}
+.editor {
+  flex: 0.5;
+  height: 670px;
+}
+.Dropdown-control {
+  cursor: pointer !important;
+  padding-bottom: 2px !important;
+  height: 30px;
+  text-align: start;
+  font-size: 15px;
+  /* border: none !important; */
+  margin-left: 5px;
+  box-shadow: none !important;
+}
+.footer {
+  width: min-content;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  border: 1px solid grey;
+  cursor: pointer;
+  text-align: start;
+  color: #6c7f95 !important;
+  align-self: baseline !important;
+  text-transform: none !important;
+  margin-top: 10px !important;
+}
+.Dropdown-menu {
+  margin-top: 4px !important;
+  width: 115px !important;
+}
+.console {
+  position: relative;
+
+  height: 100px;
+  border: 1px solid purple;
+  background-color: white;
+}
+.consoleplusarea {
+  display: flex;
+  flex-direction: column;
+}
+.testareaoutput {
+  /* margin-top: 5px; */
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+  height: 160px;
+  resize: none;
+  border: 1px solid #9eb3cb;
+}
+textarea:focus {
+  outline: none !important;
+  border-color: rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+.langaugeselector {
+  display: flex;
+  /* border:1px solid #6c7f95; */
+  width: fit-content;
+  height: fit-content;
+}
+.textarea {
+  margin-top: 2px;
+  align-self: center;
+  height: 120px;
+  width: 90%;
+  resize: none;
+}
+.testout {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+}
+/* .testareaoutput{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+} */
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
