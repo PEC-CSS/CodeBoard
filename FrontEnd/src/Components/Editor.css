@@ -6,22 +6,6 @@
   /* position: absolute !important; */
   /* width: 900px; */
 }
-.Content{
-  display: flex;
-  flex-direction: column;
-}
-.navbar{
-  width: 100%;
-  height: auto;
-
-}
-.whiteboard {
-  flex: 0.5;
-}
-.editor {
-  flex: 0.5;
-  height: 670px;
-}
 .Dropdown-control {
   cursor: pointer !important;
   padding-bottom: 2px !important;
