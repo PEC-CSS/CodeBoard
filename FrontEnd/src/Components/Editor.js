@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './Editor.css'
-import Navbar from './Navbar';
+import Axios from 'axios';
 import 'codemirror/lib/codemirror.css';
 import "codemirror/mode/clike/clike";
 import "codemirror/mode/python/python";
@@ -55,12 +55,13 @@ import codemirror from 'codemirror';
 import Modal from './Modal';
 require('codemirror/theme/neat.css');
 
-function Editor() {
+function Editor({ socketRef, onCodeChange, roomId }) {
 
     const editorRef = useRef(null);
     const [flag2, setflag2] = useState(0);
     const [flag, setflag] = useState(true)
     const [size, setsize] = useState("10%");
+
     const handleClicked = async () => {
         if (flag) {
             const current = editorRef.current.display.wrapper.style.height = '440px';
@@ -91,136 +92,161 @@ function Editor() {
                 coverGutterNextToScrollbar: true,
             }
         );
+
+
         editorRef.current.display.wrapper.style.height = '600px';
         editorRef.current.display.wrapper.style.resize = 'none';
+
+
         editorRef.current.on('change', (instance, changes) => {
-            // const { origin } = changes;
-            // console.log(origin)
-            let code = instance.getValue();                 // getting code 
-            // console.log(code);
-            // console.log(theme);
-            // onCodeChange(code);
-            // if (origin !== 'setValue') {
-            //     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-            //         roomId,
-            //         code,
-            //     });
-            // }
-        });
+            console.log(changes);
+            const { origin } = changes;
+            const code = instance.getValue();
+            onCodeChange(code);
+            // console.log(origin);
+            if (origin !== 'setValue') {
+                socketRef.current.emit('code_change', ({ roomId, code }))
+            }
+        })
+
+
     }, [])
+
+    useEffect(() => {
+        if (socketRef.current) {
+            socketRef.current.on('code_change', (code) => {
+                console.log(code)
+                if (code !== null) {
+                    editorRef.current.setValue(code);
+                }
+            })
+        }
+
+        return () => {
+            socketRef.current.off('code_change');
+        }
+    }, [socketRef.current])
+
+
     const language = [
         "C++",
         'C',
         'Java',
         "Python",
     ];
+
     const mapping = {
-        "C++": "c++src",
-        "C": "csrc",                        
+        "C++": "cpp",
+        "C": "c",
+        "C#": "cs",
         "Java": "java",
-        "Python": "python"
+        "Python": "py",
+        "Ruby": "rb",
+        "Kotlin": "kt",
+        "Swift": "swift"
     }
 
     const [mode, setmode] = useState('c++')
     const [theme, settheme] = useState("ambiance")
     const [tabsize, settabsize] = useState("4");
+    const [userInput, setUserInput] = useState('');
+    const [userOutput, setUserOutput] = useState('');
+    const [loading, setLoading] = useState(true);
+
     const defaultOption = language[0];
+
+
     const changemod = (e) => {
         let temp = flag + 1;
         setflag(temp);
         setmode(e.value)
     }
-    console.log(mode);
+    // console.log(mode);
+
+    const submitCode = () => {
+        // console.log('submit');
+        // Axios.post(`http://localhost:3001/compile`, {
+        //     code: editorRef.current.getValue(),
+        //     language: mapping[mode],
+        //     input: userInput
+        // }).then((res) => {
+        //     setUserOutput(res.data.output);
+        // }).then(() => {
+        //     setLoading(false);
+        // })
+        // console.log(userOutput);
+    }
+
     return (
         <>
-            <div className='Content'>
-                <div className="navbar">
-                    <Navbar/>
+            <div className="heading" >
+
+                <div className="langaugeselector">
+                    <Tooltip title="Choose Your Language" TransitionComponent={Zoom} placement='top'>
+
+                        <HelpOutlinedIcon style={{ marginTop: '7px', backgroundColor: 'white', fontWeight: 'lighter', borderRadius: '50px', marginLeft: '5px' }}>
+
+                        </HelpOutlinedIcon>
+
+                    </Tooltip>
+                    <Dropdown
+                        style={{ cursor: 'pointer' }}
+                        options={language}
+                        value={defaultOption}
+                        onChange={changemod}
+                    />
+
                 </div>
-                <Split >
-                    <div className="whiteboard">
-                        <h1>Area For WhiteBoard</h1>
-                    </div>
+                <div className="settings" >
+                    <Tooltip title="Editor Settings" TransitionComponent={Zoom} placement='top'>
+                        <SettingsIcon data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ height: '20px', width: '20px', color: '#ffc107' }} />
 
-                    <div className="editor">
-                        <div className="heading" >
-
-                            <div className="langaugeselector">
-                                <Tooltip title="Choose Your Language" TransitionComponent={Zoom} placement='top'>
-
-                                    <HelpOutlinedIcon style={{ marginTop: '7px', backgroundColor: 'white', fontWeight: 'lighter', borderRadius:'50px', marginLeft:'5px'}}>
-
-                                    </HelpOutlinedIcon>
-
-                                </Tooltip>
-                                <Dropdown
-                                    style={{ cursor: 'pointer' }}
-                                    options={language}
-                                    value={defaultOption}
-                                    onChange={changemod}
-                                />
-
-                            </div>
-                            <div className="settings" >
-                                <Tooltip title="Editor Settings" TransitionComponent={Zoom} placement='top'>
-                                    <SettingsIcon data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ height: '20px', width: '20px', color:'#ffc107' }} />
-
-                                </Tooltip>
-                                <Modal settheme={settheme} settabsize={settabsize} flag={flag2} setflag={setflag2} editorRef={editorRef} />
+                    </Tooltip>
+                    <Modal settheme={settheme} settabsize={settabsize} flag={flag2} setflag={setflag2} editorRef={editorRef} />
 
 
-                            </div>
-                        </div>
-                        <Split horizontal initialPrimarySize="90%" minSecondarySize={size} splitterSize="0%" >
-                            <textarea
-                                id='realtimeEditor'
-                                value="#include <iostream>"
-                            ></textarea>
+                </div>
+            </div>
+            <Split horizontal initialPrimarySize="90%" minSecondarySize={size} splitterSize="0%" >
+                <textarea
+                    id='realtimeEditor'
+                ></textarea>
 
-                            <div className="consoleplusarea">
-                                {/* <div className="testareaoutput">
+                <div className="consoleplusarea">
+                    {/* <div className="testareaoutput">
                                 <div className="testarea">
 
                                 </div>
                                 <div className="output"></div>
                             </div> */}
-                                {!flag && <div className='testareaoutput'>
-                                    <div className="testout">
-                                        <div className="testarea"></div>
-                                        <div className="output"></div>
-                                    </div>
-                                    <textarea className="textarea">
+                    {!flag && <div className='testareaoutput'>
+                        <div className="testout">
+                            <div className="testarea"></div>
+                            <div className="output"></div>
+                        </div>
+                        <textarea className="textarea">
 
-                                    </textarea>
-                                </div>}
-                                <div className="mainfooter" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        </textarea>
+                    </div>}
+                    <div className="mainfooter" style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                                    <Button onclick = {handleClicked} className="Console" style={{ width: '80px', height: '20px' }}>
-                                        Console
-                                    </Button>
-                                    <div className="submitandtest">
-                                        <Button className="submit" >
-                                            <ArrowRightIcon /> Run Code
-                                        </Button>
-                                        <Button className="submit" >
-                                            Submit
-                                        </Button>
-                                    </div>
+                        <Button onClick={handleClicked} className="Console" style={{ width: '80px', height: '20px' }}>
+                            Console
+                        </Button>
+                        <div className="submitandtest">
+                            <Button className="submit" >
+                                <ArrowRightIcon /> Run Code
+                            </Button>
+                            <Button className="submit" onClick={submitCode}>
+                                Submit
+                            </Button>
+                        </div>
 
-                                    
-                                </div>
-                            </div>
 
-                        </Split>
                     </div>
+                </div>
 
-                </Split>
-            </div>
-
-
-
-
-
+            </Split>
         </>
     )
 }

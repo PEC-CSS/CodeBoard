@@ -1,0 +1,17 @@
+.Content{
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar{
+    width: 100%;
+    height: auto;
+    margin-top: -4px;
+    margin-bottom: -3px;
+  }
+  .whiteboard {
+    flex: 0.5;
+  }
+  .editor {
+    flex: 0.5;
+    height: 670px;
+  }
