@@ -1,4 +1,4 @@
-import Editor from "./Components/Editor";
+import Editor from "E:/React/CodeBoard/FrontEnd/src/Components/Editor.js";
 
 function App() {
   return (

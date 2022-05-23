@@ -6,9 +6,14 @@
   /* position: absolute !important; */
   /* width: 900px; */
 }
-.flex {
-  padding-top: 40px;
-  /* display: flex; */
+.Content{
+  display: flex;
+  flex-direction: column;
+}
+.navbar{
+  width: 100%;
+  height: auto;
+
 }
 .whiteboard {
   flex: 0.5;
@@ -20,14 +25,24 @@
 .Dropdown-control {
   cursor: pointer !important;
   padding-bottom: 2px !important;
-  height: auto;
+  height: 35.5px;
   text-align: start;
   font-size: 15px;
   width: auto;
-  /* border: none !important; */
-  /* margin-left: 5px; */
+  color: #f6c15e !important;
   box-shadow: none !important;
   border-radius: 10px !important;
+  border-width: 3px  !important;
+  background-color: transparent !important;
+}
+.Dropdown-option{
+  color: #f6c15e !important;
+  
+  background:RGB(61, 61, 61) !important;
+}
+.Dropdown-option:hover{
+  background: #5e5c5c !important;
+  border-radius: 10px;
 }
 .Console {
   width: min-content;
@@ -43,10 +58,13 @@
 }
 .Dropdown-menu {
   /* width: 95px !important; */
-  width:auto; 
-
+  width: auto;
   border-radius: 10px;
+  border-width: 3px !important;
+  background-color: #3d3d3d !important;
+  color: #f6c15e !important;
 }
+
 .console {
   position: relative;
 
@@ -57,9 +75,6 @@
 .consoleplusarea {
   display: flex;
   flex-direction: column;
-}
-.flex {
-  z-index: -10;
 }
 .testareaoutput {
   /* margin-top: 5px; */
@@ -105,6 +120,10 @@ textarea:focus {
     flex-direction: row;
     height: 40px;
 } */
+.Dropdown-root{
+  margin: 2px;
+  margin-left: 4px;
+}
 .CodeMirror-scroll {
   overflow-y: hidden;
   overflow-x: auto;
@@ -125,6 +144,12 @@ textarea:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 40px;
+  width: 100%;
+  /* margin-bottom: 7px; */
+  background-color: RGB(61, 61, 61);
+  border-radius: 5px;
+  margin-bottom: 1px;
   /* left: 0; */
 }
 .settings {
@@ -133,7 +158,7 @@ textarea:focus {
   width: 20px;
   margin-right: 15px !important;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: center;
 }
 
 .fontsize {
@@ -148,7 +173,7 @@ textarea:focus {
   margin-right: 10px; */
   /* border-bottom: 1px solid #dadfe5; */
 }
-.textdivide{
+.textdivide {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -156,24 +181,23 @@ textarea:focus {
   /* margin-left: 5px; */
   /* border: 1px solid black; */
 }
-.size{
+.size {
   /* margin-right: 5px; */
   width: 170px;
   height: 35px;
 }
-.head{
+.head {
   width: 300px;
   height: 30px;
   /* border: 1px solid black; */
 }
-.desc{
+.desc {
   width: 300px;
   height: 30px;
   /* border: 1px solid black; */
   font-size: small;
   color: #6c7f95;
 }
-.modal-content{
+.modal-content {
   border-radius: 25px;
-
 }
