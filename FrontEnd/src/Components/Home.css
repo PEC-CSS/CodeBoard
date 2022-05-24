@@ -1,0 +1,81 @@
+.homewrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    height: 100vh;
+  }
+  
+  .formwrapper {
+    background: #282a36;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mainLabel {
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+  
+  .homePageLogo {
+    height: 80px;
+    margin-bottom: 30px;
+  }
+  
+  .inputBox {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin-bottom: 14px;
+    background: #eee;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .btn {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .joinBtn,
+  .leaveBtn {
+    background: #4aed88;
+    width: 100px;
+    margin-left: auto;
+  }
+  
+  .joinBtn:hover,
+  .leaveBtn:hover {
+    background: #2b824c;
+  }
+  
+  .createInfo {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  .createNewBtn {
+    color: #4aed88;
+    text-decoration: none;
+    border-bottom: 1px solid #4aed88;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .createNewBtn:hover,
+  footer a:hover {
+    color: #368654;
+    border-color: #368654;
+  }
