@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from './icon.jpg'
 function Navbar() {
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
             <div class="container-fluid">
 
                 <button
