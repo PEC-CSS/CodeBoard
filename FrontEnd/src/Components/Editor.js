@@ -99,22 +99,6 @@ function Editor({ socketRef, onCodeChange, roomId }) {
 
 
         editorRef.current.on('change', (instance, changes) => {
-<<<<<<< HEAD
-            // const { origin } = changes;
-            // console.log(origin)
-            let code = instance.getValue();                 // getting code 
-            // console.log(code);
-            // console.log(theme);
-            // onCodeChange(code);
-            // if (origin !== 'setValue') {
-            //     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-            //         roomId,
-            //         code,
-            //     });
-            
-            // }
-        });
-=======
             console.log(changes);
             const { origin } = changes;
             const code = instance.getValue();
@@ -123,10 +107,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
             if (origin !== 'setValue') {
                 socketRef.current.emit('code_change', ({ roomId, code }))
             }
-        })
-
-
->>>>>>> d5fcbd8b679fdef47be481726d961fd66b7489ce
+        });
     }, [])
 
     useEffect(() => {
