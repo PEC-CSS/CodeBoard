@@ -5,6 +5,7 @@ import { v4 } from 'uuid';
 import './Home.css';
 import Typist from 'react-typist'
 import Zoom from 'react-reveal/Zoom';
+import Tilt from 'react-parallax-tilt';
 function Home() {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
@@ -42,53 +43,63 @@ function Home() {
     return (
         <div className="Home">
             <div className="Title">
-                <Typist
-                    avgTypingDelay={50}
-                    startDelay={1000}
-                    cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
-                // cursor={{}}
-                >
-                    Codeboard
-                </Typist>
+                <div id = "main">
+                    <Tilt>
+                    <Typist
+
+
+                        avgTypingDelay={50}
+                        startDelay={1000}
+                        cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
+                    // cursor={{}}
+                    >
+                        Codeboard
+                    </Typist>
+                    
+                    </Tilt>
+                </div>
+
 
             </div>
 
             <div className='homewrapper'>
                 <Zoom>
-                    <div className='formwrapper'>
-                        <h4 className="mainLabel">Join Room</h4>
-                        <div className="inputGroup">
-                            <input
-                                type="text"
-                                className="inputBox"
-                                placeholder="room_id"
-                                onChange={(e) => setRoomId(e.target.value)}
-                                value={roomId}
-                                onKeyUp={handleInputEnter}
-                            />
-                            <input
-                                type="text"
-                                className="inputBox"
-                                placeholder="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                                value={username}
-                                onKeyUp={handleInputEnter}
-                            />
-                            <button className="btn joinBtn" onClick={joinRoom}>
-                                Join
-                            </button>
-                            <span className="createInfo">
-                                If you don't have an invite then create &nbsp;
-                                <a
-                                    onClick={createNewRoom}
-                                    href=""
-                                    className="createNewBtn"
-                                >
-                                    new room
-                                </a>
-                            </span>
+                    <Tilt>
+                        <div className='formwrapper'>
+                            <h4 className="mainLabel">Join Room</h4>
+                            <div className="inputGroup">
+                                <input
+                                    type="text"
+                                    className="inputBox"
+                                    placeholder="room_id"
+                                    onChange={(e) => setRoomId(e.target.value)}
+                                    value={roomId}
+                                    onKeyUp={handleInputEnter}
+                                />
+                                <input
+                                    type="text"
+                                    className="inputBox"
+                                    placeholder="username"
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={username}
+                                    onKeyUp={handleInputEnter}
+                                />
+                                <button className="btn joinBtn" onClick={joinRoom}>
+                                    Join
+                                </button>
+                                <span className="createInfo">
+                                    If you don't have an invite then create &nbsp;
+                                    <a
+                                        onClick={createNewRoom}
+                                        href=""
+                                        className="createNewBtn"
+                                    >
+                                        new room
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    </Tilt>
                 </Zoom>
             </div>
         </div>

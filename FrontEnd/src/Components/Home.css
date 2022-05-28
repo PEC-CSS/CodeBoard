@@ -13,10 +13,8 @@
     1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
     1px 30px 60px rgba(16, 16, 16, 0.4);
   justify-content: center;
- 
 }
 .homewrapper {
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,14 +66,13 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
 .joinBtn,
 .leaveBtn {
   background: #4aed88;
   width: 100px;
   margin-left: auto;
 }
-.joinBtn:focus{
+.joinBtn:focus {
   outline: none;
   box-shadow: none;
 }
