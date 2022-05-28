@@ -1,81 +1,104 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+}
+.Title {
+  display: flex;
+  color: white;
+  font-size: 100px;
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+    1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+    1px 7px 1px #919191, 1px 8px 1px #919191, 1px 9px 1px #919191,
+    1px 10px 1px #919191, 1px 18px 6px rgba(16, 16, 16, 0.4),
+    1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
+    1px 30px 60px rgba(16, 16, 16, 0.4);
+  justify-content: center;
+ 
+}
 .homewrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    height: 100vh;
-  }
   
-  .formwrapper {
-    background: #282a36;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .mainLabel {
-    margin-bottom: 20px;
-    margin-top: 0;
-  }
-  
-  .homePageLogo {
-    height: 80px;
-    margin-bottom: 30px;
-  }
-  
-  .inputBox {
-    padding: 10px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    margin-bottom: 14px;
-    background: #eee;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .btn {
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .joinBtn,
-  .leaveBtn {
-    background: #4aed88;
-    width: 100px;
-    margin-left: auto;
-  }
-  
-  .joinBtn:hover,
-  .leaveBtn:hover {
-    background: #2b824c;
-  }
-  
-  .createInfo {
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  
-  .createNewBtn {
-    color: #4aed88;
-    text-decoration: none;
-    border-bottom: 1px solid #4aed88;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .createNewBtn:hover,
-  footer a:hover {
-    color: #368654;
-    border-color: #368654;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  height: 78vh;
+}
+
+.formwrapper {
+  background: #282a36;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLabel {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.homePageLogo {
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+.inputBox {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-bottom: 14px;
+  background: #eee;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.joinBtn,
+.leaveBtn {
+  background: #4aed88;
+  width: 100px;
+  margin-left: auto;
+}
+.joinBtn:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.joinBtn:hover,
+.leaveBtn:hover {
+  background: #2b824c;
+}
+
+.createInfo {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.createNewBtn {
+  color: #4aed88;
+  text-decoration: none;
+  border-bottom: 1px solid #4aed88;
+  transition: all 0.3s ease-in-out;
+}
+
+.createNewBtn:hover,
+footer a:hover {
+  color: #368654;
+  border-color: #368654;
+}

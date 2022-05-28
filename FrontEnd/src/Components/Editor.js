@@ -107,9 +107,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
             if (origin !== 'setValue') {
                 socketRef.current.emit('code_change', ({ roomId, code }))
             }
-        })
-
-
+        });
     }, [])
 
     useEffect(() => {

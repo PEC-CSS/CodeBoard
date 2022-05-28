@@ -3,7 +3,8 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import './Home.css';
-
+import Typist from 'react-typist'
+import Zoom from 'react-reveal/Zoom';
 function Home() {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
@@ -19,7 +20,7 @@ function Home() {
                 }
             })
         }
-        else{
+        else {
             toast.error("username and roomId required");
         }
     }
@@ -31,7 +32,7 @@ function Home() {
     }
 
     const handleInputEnter = (e) => {
-        if(e.code == 'Enter'){
+        if (e.code == 'Enter') {
             joinRoom();
         }
     }
@@ -39,42 +40,59 @@ function Home() {
 
 
     return (
-        <div className='homewrapper'>
-            <div className='formwrapper'>
-                <h4 className="mainLabel">Paste invitation ROOM ID</h4>
-                <div className="inputGroup">
-                    <input
-                        type="text"
-                        className="inputBox"
-                        placeholder="ROOM ID"
-                        onChange={(e) => setRoomId(e.target.value)}
-                        value={roomId}
-                        onKeyUp={handleInputEnter}
-                    />
-                    <input
-                        type="text"
-                        className="inputBox"
-                        placeholder="USERNAME"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                        onKeyUp={handleInputEnter}
-                    />
-                    <button className="btn joinBtn" onClick={joinRoom}>
-                        Join
-                    </button>
-                    <span className="createInfo">
-                        If you don't have an invite then create &nbsp;
-                        <a
-                            onClick={createNewRoom}
-                            href=""
-                            className="createNewBtn"
-                        >
-                            new room
-                        </a>
-                    </span>
-                </div>
+        <div className="Home">
+            <div className="Title">
+                <Typist
+                    avgTypingDelay={50}
+                    startDelay={1000}
+                    cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
+                // cursor={{}}
+                >
+                    Codeboard
+                </Typist>
+
+            </div>
+
+            <div className='homewrapper'>
+                <Zoom>
+                    <div className='formwrapper'>
+                        <h4 className="mainLabel">Join Room</h4>
+                        <div className="inputGroup">
+                            <input
+                                type="text"
+                                className="inputBox"
+                                placeholder="room_id"
+                                onChange={(e) => setRoomId(e.target.value)}
+                                value={roomId}
+                                onKeyUp={handleInputEnter}
+                            />
+                            <input
+                                type="text"
+                                className="inputBox"
+                                placeholder="username"
+                                onChange={(e) => setUsername(e.target.value)}
+                                value={username}
+                                onKeyUp={handleInputEnter}
+                            />
+                            <button className="btn joinBtn" onClick={joinRoom}>
+                                Join
+                            </button>
+                            <span className="createInfo">
+                                If you don't have an invite then create &nbsp;
+                                <a
+                                    onClick={createNewRoom}
+                                    href=""
+                                    className="createNewBtn"
+                                >
+                                    new room
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </Zoom>
             </div>
         </div>
+
     )
 }
 

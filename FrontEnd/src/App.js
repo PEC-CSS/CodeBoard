@@ -1,7 +1,7 @@
 import {
-BrowserRouter,
-Routes,
-Route
+  BrowserRouter,
+  Routes,
+  Route
 } from 'react-router-dom';
 import Home from "./Components/Home";
 import { Toaster } from "react-hot-toast";
@@ -10,7 +10,7 @@ import EditorPage from "./Components/EditorPage";
 function App() {
   return (
     <>
-    <div>
+      <div>
         <Toaster
           position="top-right"
           toastOptions={{
@@ -22,12 +22,12 @@ function App() {
           }}
         ></Toaster>
       </div>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/editor/:roomId' element={<EditorPage/>} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/editor/:roomId' element={<EditorPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
