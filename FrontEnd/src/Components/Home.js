@@ -6,6 +6,7 @@ import './Home.css';
 import Typist from 'react-typist'
 import Zoom from 'react-reveal/Zoom';
 import Tilt from 'react-parallax-tilt';
+import { SnowFallSlowEffect } from 'react-background-animation';
 function Home() {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
@@ -41,21 +42,22 @@ function Home() {
 
 
     return (
+        <>
+        <SnowFallSlowEffect/>
         <div className="Home">
             <div className="Title">
-                <div id = "main">
+                <div id="main">
                     <Tilt>
-                    <Typist
+                        <Typist
 
 
-                        avgTypingDelay={50}
-                        startDelay={1000}
-                        cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
-                    // cursor={{}}
-                    >
-                        Codeboard
-                    </Typist>
-                    
+                            avgTypingDelay={50}
+                            startDelay={1000}
+                            cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
+                        >
+                            Codeboard
+                        </Typist>
+
                     </Tilt>
                 </div>
 
@@ -103,7 +105,7 @@ function Home() {
                 </Zoom>
             </div>
         </div>
-
+        </>
     )
 }
 

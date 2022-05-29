@@ -1,6 +1,7 @@
 .Home {
   display: flex;
   flex-direction: column;
+  background-color: #181a18;
 }
 .Title {
   display: flex;
@@ -24,11 +25,12 @@
 }
 
 .formwrapper {
-  background: #282a36;
+  background: #181a18;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
   max-width: 90%;
+  
 }
 
 .inputGroup {
