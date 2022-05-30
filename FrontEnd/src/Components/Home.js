@@ -3,10 +3,11 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import './Home.css';
-import Typist from 'react-typist'
+import Logo from './codeboardlogo.png';
 import Zoom from 'react-reveal/Zoom';
 import Tilt from 'react-parallax-tilt';
-import { SnowFallSlowEffect } from 'react-background-animation';
+import { CloudWaveEffect} from 'react-background-animation';
+import Slide from 'react-reveal/Slide';
 function Home() {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
@@ -43,30 +44,21 @@ function Home() {
 
     return (
         <>
-        <SnowFallSlowEffect/>
+        <CloudWaveEffect/>
         <div className="Home">
             <div className="Title">
                 <div id="main">
                     <Tilt>
-                        <Typist
-
-
-                            avgTypingDelay={50}
-                            startDelay={1000}
-                            cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
-                        >
-                            Codeboard
-                        </Typist>
-
+                        <Slide left="true">
+                            <img src={Logo} />
+                        </Slide>
                     </Tilt>
                 </div>
-
-
             </div>
 
             <div className='homewrapper'>
                 <Zoom>
-                    <Tilt>
+                    {/* <Tilt> */}
                         <div className='formwrapper'>
                             <h4 className="mainLabel">Join Room</h4>
                             <div className="inputGroup">
@@ -101,7 +93,7 @@ function Home() {
                                 </span>
                             </div>
                         </div>
-                    </Tilt>
+                    {/* </Tilt> */}
                 </Zoom>
             </div>
         </div>

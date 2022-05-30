@@ -6,6 +6,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 const Axios = require("axios");
 const cors = require("cors");
+var qs = require("qs");
 
 app.use(cors())
 app.use(express.json());
@@ -20,40 +21,42 @@ function getAllConnectedClients(roomId){
     })
 }
 
-//to compile code
-// app.post("/compile", (req, res) => {
-//     //getting the required data from the request
-//     let code = req.body.code;
-//     let language = req.body.language;
-//     let input = req.body.input;
+// to compile code
+app.post("/compile", (req, res) => {
+    //getting the required data from the request
+    console.log("compiling");
+    let code = req.body.code;
+    let language = req.body.language;
+    let input = req.body.input;
  
-//     let data = ({
-//         "code": code,
-//         "language": language,
-//         "input": input
-//     });
-//     let config = {
-//         method: 'post',
-//         url: 'https://codexweb.netlify.app/.netlify/functions/enforceCode',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         data: data
-//     };
-//     //calling the code compilation API
+    let data = qs.stringify({
+        "code": code,
+        "language": language,
+        "input": input
+    });
+    console.log(data);
+    var config = {
+        method: "post",
+        url: "https://codex-api.herokuapp.com/",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        data: data
+      };
+    //calling the code compilation API
 
-//     Axios(config)
-//         .then((response)=>{
-//             // console.log(res.data);
-//             res.send(response.data)
-//             // console.log(response.data)
-//         }).catch((error)=>{
-//             console.log(error);
-//         });
-// })
+    Axios(config)
+        .then((response)=>{
+            console.log(JSON.stringify(response.data));
+            res.send(response.data)
+            // console.log(response.data)
+        }).catch((error)=>{
+            console.log(error);
+        });
+})
 
 io.on('connection',(socket) => {
-    console.log(socket.id + "i am here");
+    // console.log(socket.id + "i am here");
     
     socket.on('join',({username,roomId}) => {
         socketUserMap[socket.id] = username
@@ -77,6 +80,10 @@ io.on('connection',(socket) => {
         socket.on('code_change',({roomId,code}) => {
             // console.log(roomId,code);
             socket.in(roomId).emit('code_change',(code));
+        })
+
+        socket.on('send_message',({message,username,roomId})=>{
+            io.to(roomId).emit('get_message',{message,username});
         })
 
         socket.on('disconnecting',() => {
