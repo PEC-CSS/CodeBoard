@@ -16,16 +16,6 @@ function EditorPage() {
     const codeRef = useRef('');
     const navigate = useNavigate();
 
-
-    const copyRoomId = () => {
-        navigator.clipboard.writeText(location.state.roomId);
-        toast.success('copied');
-    }
-
-    const leaveRoom = () => {
-        navigate('/')
-    }
-
     useEffect(() => {
         const init = async () => {
             socketRef.current = await socket();
@@ -83,8 +73,8 @@ function EditorPage() {
 
     return (
         <div>
-            <div className="navbar">
-                <Navbar />
+            <div className="navv">
+                <Navbar roomId={location.state.roomId}/>
             </div>
             <div className='Content'>
                 <Split>

@@ -1,13 +1,9 @@
 .Content{
     display: flex;
     flex-direction: column;
+    margin-top: 12px;
   }
-  .navbar{
-    width: 100%;
-    height: auto;
-    margin-top: -4px;
-    margin-bottom: -3px;
-  }
+
   .whiteboard {
     flex: 0.5;
   }

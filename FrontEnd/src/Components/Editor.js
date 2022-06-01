@@ -42,6 +42,7 @@ import "codemirror/theme/material-darker.css";
 import "codemirror/theme/material-palenight.css";
 import "codemirror/theme/mdn-like.css";
 import "codemirror/theme/eclipse.css";
+import "codemirror/theme/ayu-dark.css";
 import { Split } from "@geoffcox/react-splitter"
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -78,8 +79,8 @@ function Editor({ socketRef, onCodeChange, roomId }) {
         editorRef.current = codemirror.fromTextArea(
             document.getElementById('realtimeEditor'),
             {
-                mode: `text/x-c++src`,
-                theme: 'material-darker',
+                mode: `javascript`,
+                theme: 'ayu-dark',
                 autoCloseTags: true,
                 autoCloseBrackets: true,
                 lineNumbers: true,
@@ -99,7 +100,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
 
 
         editorRef.current.on('change', (instance, changes) => {
-            console.log(changes);
+            // console.log(changes);
             const { origin } = changes;
             const code = instance.getValue();
             onCodeChange(code);
@@ -144,7 +145,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
         "Swift": "swift"
     }
 
-    const [mode, setmode] = useState('c++')
+    const [mode, setmode] = useState('C++')
     const [theme, settheme] = useState("ambiance")
     const [tabsize, settabsize] = useState("4");
     const [userInput, setUserInput] = useState('');
@@ -161,18 +162,18 @@ function Editor({ socketRef, onCodeChange, roomId }) {
     }
     // console.log(mode);
 
-    const submitCode = () => {
-        // console.log('submit');
-        // Axios.post(`http://localhost:3001/compile`, {
-        //     code: editorRef.current.getValue(),
-        //     language: mapping[mode],
-        //     input: userInput
-        // }).then((res) => {
-        //     setUserOutput(res.data.output);
-        // }).then(() => {
-        //     setLoading(false);
-        // })
-        // console.log(userOutput);
+    const submitCode = async() => {
+        console.log('submit');
+        await Axios.post(`http://localhost:3001/compile`, {
+            code: editorRef.current.getValue(),
+            language: mapping[mode],
+            input: userInput
+        }).then((res) => {
+            setUserOutput(res.data.output);
+        }).then(() => {
+            setLoading(false);
+        })
+        console.log(userOutput);
     }
 
     return (

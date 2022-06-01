@@ -1,0 +1,48 @@
+.navbar {
+    height: 50px;
+    margin-top: -5px;
+    width: 100vw;
+    background-image: linear-gradient(to right, black, #29797c);
+    box-shadow: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: flex-start; */
+}
+.navbuttons{
+    float: inline-end;
+    margin-right: 50px;
+}
+.navbutton {
+    cursor: pointer;
+    background-color: transparent;
+    border: transparent;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 1px 6px 2px 6px;
+    color: white;
+}
+.leaveButton{
+    cursor: pointer;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 2px 10px 2px 10px;
+}
+
+.leaveButton:hover{
+    opacity: 0.8;
+}
+.copyRoomId{
+    visibility: collapse;
+    font-size: 0;
+    position: relative;
+}
+
+.navbutton:hover{
+    background-color: #0a3a3c;
+    border-radius: 5px;
+    transition: ease-in-out;
+    visibility: visible;
+}
