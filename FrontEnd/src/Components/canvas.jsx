@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./canvas.css";
-import Draggable from 'react-draggable';
 
 export default function Canvas() {
   const [isDrawing, setIsDrawing] = useState(false);
