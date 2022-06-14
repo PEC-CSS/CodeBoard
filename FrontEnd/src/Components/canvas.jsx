@@ -1,15 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./canvas.css";
+import "./Canvas.css";
+import { Split } from "@geoffcox/react-splitter"
 
 export default function Canvas() {
   const [isDrawing, setIsDrawing] = useState(false);
-  const [color, setColor] = useState("#3B3B3B");
+  const [color, setColor] = useState("#2d2d2d");
   const [size, setSize] = useState("3");
   const canvasRef = useRef(null);
   const ctx = useRef(null);
   const timeout = useRef(null);
   const [cursor, setCursor] = useState("default");
-
   useEffect(() => {
     const canvas = canvasRef.current;
     ctx.current = canvas.getContext("2d");
@@ -30,6 +30,7 @@ export default function Canvas() {
       image.src = canvasimg;
     }
   }, [ctx]);
+
 
   const startPosition = ({ nativeEvent }) => {
     setIsDrawing(true);
@@ -67,27 +68,31 @@ export default function Canvas() {
     localStorage.removeItem("canvasimg");
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    context.fillStyle = "white";
+    context.fillStyle = "#2d2d2d";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     //Passing clear screen
     if (timeout.current !== undefined) clearTimeout(timeout.current);
     timeout.current = setTimeout(function () {
       var base64ImageData = canvas.toDataURL("image/png");
-      localStorage.setItem("canvasimg", base64ImageData);
+      var dataUrl = canvas.toDataURL('./blackboard.jpg'); 
+      localStorage.setItem("canvasimg", dataUrl);
     }, 400);
   };
 
   const getPen = () => {
-    setCursor("default");
+    // {style={{cursor:"pointer"}}
+    // setCursor(('./pencil.cur'));
+    setCursor("pointer");
+    // {style="cursor: url(images/special.cur),auto;"}
     setSize("3");
-    setColor("#3B3B3B");
+    setColor("white");
   };
-
-  const eraseCanvas = () => {
+  
+  const eraseCanvas = (e) => {
     setCursor("grab");
     setSize("20");
-    setColor("#FFFFFF");
+    setColor("#2d2d2d");
 
     if (!isDrawing) {
       return;
@@ -96,12 +101,15 @@ export default function Canvas() {
 
   return (
     <>
+    <Split horizontal initialPrimarySize="90%" minSecondarySize={size} splitterSize="0%" >
+    <div className="CanvasRoot">
       <div className="canvas-btn">
-        <button onClick={getPen} className="btn-width">
-          Pencil
+        <button onClick={getPen} className="btn-width cursor">
+        <img src={require('./pencil.png')} className="pencil" />
         </button>
-        <div className="btn-width">
+        <div >
           <input
+            className="color"
             type="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
@@ -109,7 +117,7 @@ export default function Canvas() {
         </div>
         <div>
           <select
-            className="btn-width"
+            className="btn-width size-selector"
             value={size}
             onChange={(e) => setSize(e.target.value)}
           >
@@ -121,16 +129,16 @@ export default function Canvas() {
             <option> 20 </option>
             <option> 25 </option>
             <option> 30 </option>
-          </select>
+          </select> 
         </div>
-        <button onClick={clearCanvas} className="btn-width">
-          Clear
-        </button>
         <div>
           <button onClick={eraseCanvas} className="btn-width">
-            Eras
+            <img src={require('./eraser.png')} className="eraser" />
           </button>
         </div>
+        <button onClick={clearCanvas} className="btn-width">
+        <img src={require('./clear.png')} className="clear" />
+        </button>
       </div>
       <canvas
         style={{ cursor: cursor }}
@@ -139,6 +147,8 @@ export default function Canvas() {
         onMouseMove={draw}
         ref={canvasRef}
       />
+      </div>
+      </Split>
     </>
   );
 }
