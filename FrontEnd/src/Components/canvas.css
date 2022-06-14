@@ -1,3 +1,6 @@
+/* .CanvasRoot{
+    margin-bottom: -650px;
+} */
 #circularcursor {
     background-color: transparent;
     border:1px solid black;    
@@ -14,17 +17,45 @@
     position: absolute;
     margin-left: 10px;
     margin-top: 10px;
-    border-radius: 5px;
-    border-style: solid;
+    /* border-radius: 5px; 
+    border-style: solid; */
     padding: 5px 5px;
-    border-color: gray;
-    border-width: thin;
+    /* border-color: gray; */
+    /* border: none; */
+    /* background-color: transparent; */
+    /* border-width: thin; */
 }
 
 .btn-width {
     min-width: 50px;
+    background-color: #2d2d2d;
+    margin: 0;
+    border: none;
 }
+.color{
+    min-width: 55px;
+    /* height: 20px; */
+    background: #2d2d2d;
+    border: none;
+    padding: 0;
 
+}
+.pencil{
+    height: 25px;
+}
+.eraser{
+    height: 25px;
+}
+.clear{
+    height: 45px;
+    margin-left: -4px ;
+}
 .mouse-state {
     cursor: none;
+}
+.size-selector{
+    background-color: #7E8F8F;
+    color: black;
+    border-radius: 4px;
+    height: 20px;
 }
