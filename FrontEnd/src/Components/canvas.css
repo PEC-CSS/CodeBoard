@@ -1,7 +1,4 @@
-/* .CanvasRoot{
-    margin-bottom: -650px;
-} */
-#circularcursor {
+/* #circularcursor {
     background-color: transparent;
     border:1px solid black;    
     height:25px;
@@ -17,13 +14,7 @@
     position: absolute;
     margin-left: 10px;
     margin-top: 10px;
-    /* border-radius: 5px; 
-    border-style: solid; */
     padding: 5px 5px;
-    /* border-color: gray; */
-    /* border: none; */
-    /* background-color: transparent; */
-    /* border-width: thin; */
 }
 
 .btn-width {
@@ -34,7 +25,6 @@
 }
 .color{
     min-width: 55px;
-    /* height: 20px; */
     background: #2d2d2d;
     border: none;
     padding: 0;
@@ -58,4 +48,4 @@
     color: black;
     border-radius: 4px;
     height: 20px;
-}
+} */

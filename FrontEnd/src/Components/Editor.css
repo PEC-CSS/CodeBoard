@@ -1,10 +1,6 @@
 .CodeMirror {
-  /* height: 600px !important; */
   border-radius: 5px;
   resize: vertical;
-
-  /* position: absolute !important; */
-  /* width: 900px; */
 }
 .Dropdown-control {
   cursor: pointer !important;
@@ -13,24 +9,25 @@
   text-align: start;
   font-size: 15px;
   width: auto;
-  color: #f6c15e !important;
+  color: white !important;
   box-shadow: none !important;
   border-radius: 10px !important;
-  border-width: 3px  !important;
   background-color: transparent !important;
 }
-.Dropdown-option{
-  color: #f6c15e !important;
-  
-  background:RGB(61, 61, 61) !important;
+.Dropdown-option {
+  color: white !important;
 }
-.Dropdown-option:hover{
-  background: #5e5c5c !important;
+.Dropdown-option.is-selected{
+  background: #0f2627 !important;
+}
+.Dropdown-option:hover {
+  background: #0f2627 !important;
+  background-image: linear-gradient(180deg, #0f2526, #29797c) !important;
   border-radius: 10px;
 }
 .Console {
   width: min-content;
-  height: 25px;
+  height: 100%;
   background-color: transparent;
   border: none;
   border: 1px solid grey;
@@ -41,17 +38,13 @@
   text-transform: none !important;
 }
 .Dropdown-menu {
-  /* width: 95px !important; */
   width: auto;
   border-radius: 10px;
-  border-width: 3px !important;
-  background-color: #3d3d3d !important;
-  color: #f6c15e !important;
+  background-image: linear-gradient(180deg, #0f2526, #29797c) !important;
 }
 
 .console {
   position: relative;
-
   height: 100px;
   border: 1px solid purple;
   background-color: white;
@@ -61,7 +54,7 @@
   flex-direction: column;
 }
 .testareaoutput {
-  /* margin-top: 5px; */
+  background-color: #0a0e14;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -74,7 +67,7 @@
   z-index: 10;
   margin-top: -726px;
 }
-textarea:focus {
+.input__textarea:focus {
   outline: none !important;
   border-color: rgba(81, 203, 238, 1);
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
@@ -87,31 +80,37 @@ textarea:focus {
   height: fit-content;
   /* justify-content: space-between; */
 }
-.textarea {
-  margin-top: 2px;
+.input__textarea {
+  margin-top: 1px;
   align-self: center;
   height: 120px;
-  width: 90%;
+  width: 98%;
   resize: none;
 }
+
+.output__textarea {
+  margin-top: 1px;
+  align-self: center;
+  height: 120px;
+  width: 98%;
+  resize: none;
+}
+
+
 .testout {
   display: flex;
   flex-direction: row;
   height: 30px;
+  color: white;
 }
-/* .testareaoutput{
-    display: flex;
-    flex-direction: row;
-    height: 40px;
-} */
-.Dropdown-root{
+.Dropdown-root {
   margin: 2px;
   margin-left: 4px;
 }
-.CodeMirror-scroll {
+/* .CodeMirror-scroll {
   overflow-y: hidden;
   overflow-x: auto;
-}
+} */
 .submit {
   width: auto;
   height: 30px;
@@ -121,8 +120,9 @@ textarea:focus {
   cursor: pointer;
   text-align: start;
   color: white !important;
-  align-self: baseline !important;
+  display: flex;
   text-transform: none !important;
+  margin-top: 5px !important; 
 }
 .heading {
   display: flex;
@@ -130,11 +130,9 @@ textarea:focus {
   justify-content: space-between;
   height: 40px;
   width: 100%;
-  /* margin-bottom: 7px; */
-  background-color: RGB(61, 61, 61);
+  background-image: linear-gradient(to right, #0f2526, #29797c);
   border-radius: 5px;
   margin-bottom: 1px;
-  /* left: 0; */
 }
 .settings {
   display: flex;
@@ -151,37 +149,47 @@ textarea:focus {
   align-items: center;
   justify-content: space-between;
   width: auto;
-  /* border: 1px solid black; */
-  /* margin-top: 20px; */
-  /* margin-left: 10px;
-  margin-right: 10px; */
-  /* border-bottom: 1px solid #dadfe5; */
 }
 .textdivide {
   display: flex;
   flex-direction: column;
   width: 300px;
   height: 60px;
-  /* margin-left: 5px; */
-  /* border: 1px solid black; */
 }
 .size {
-  /* margin-right: 5px; */
   width: 170px;
   height: 35px;
 }
 .head {
   width: 300px;
   height: 30px;
-  /* border: 1px solid black; */
 }
 .desc {
   width: 300px;
   height: 30px;
-  /* border: 1px solid black; */
   font-size: small;
   color: #6c7f95;
 }
 .modal-content {
   border-radius: 25px;
+}
+.Code__run{
+  height: 36.5px
+}
+.testarea{
+  width: 70px;
+  border-right: 1px solid white;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.output{
+  width: 120px;
+  margin-left: 10px;
+  cursor: pointer; 
+}
+.output:hover{
+  opacity: 0.5;
+}
+.testarea:hover{
+  opacity: 0.5;
 }

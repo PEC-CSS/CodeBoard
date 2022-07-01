@@ -2,16 +2,15 @@
     height: 50px;
     margin-top: -5px;
     width: 100vw;
-    background-image: linear-gradient(to right, black, #29797c);
+    background-image: linear-gradient(to right, #0f2526, #29797c);
     box-shadow: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: flex-start; */
 }
 .navbuttons{
     float: inline-end;
-    margin-right: 50px;
+    margin-right: 10px;
 }
 .navbutton {
     cursor: pointer;
@@ -29,6 +28,9 @@
     font-weight: 500;
     font-size: 18px;
     padding: 2px 10px 2px 10px;
+    width: 100px;
+    text-align: center;
+    border-radius: 20px;
 }
 
 .leaveButton:hover{
