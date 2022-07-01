@@ -1,0 +1,51 @@
+/* #circularcursor {
+    background-color: transparent;
+    border:1px solid black;    
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    position: absolute;
+    z-index: 1;
+  }
+
+.canvas-btn {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 5px 5px;
+}
+
+.btn-width {
+    min-width: 50px;
+    background-color: #2d2d2d;
+    margin: 0;
+    border: none;
+}
+.color{
+    min-width: 55px;
+    background: #2d2d2d;
+    border: none;
+    padding: 0;
+
+}
+.pencil{
+    height: 25px;
+}
+.eraser{
+    height: 25px;
+}
+.clear{
+    height: 45px;
+    margin-left: -4px ;
+}
+.mouse-state {
+    cursor: none;
+}
+.size-selector{
+    background-color: #7E8F8F;
+    color: black;
+    border-radius: 4px;
+    height: 20px;
+} */

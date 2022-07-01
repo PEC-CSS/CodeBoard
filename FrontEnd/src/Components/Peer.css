@@ -1,0 +1,30 @@
+/* .Video{
+    color: white;
+}
+.move1{
+    position: absolute;
+    top : 5px;
+    right: 1px;
+    background-color: black;
+    height: 120px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    z-index : 9;
+}
+.move2{
+    position: absolute;
+    top : 150px;
+    right: 1px;
+    background-color: black;
+    height: 120px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    z-index : 9;
+}
+ */

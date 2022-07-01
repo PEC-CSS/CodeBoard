@@ -57,13 +57,15 @@ import Modal from './Modal';
 require('codemirror/theme/neat.css');
 
 function Editor({ socketRef, onCodeChange, roomId }) {
-
+    const [inputarea, setinputarea] = useState(true);
+    // const [input, setinput] = useState("")
     const editorRef = useRef(null);
     const [flag2, setflag2] = useState(0);
     const [flag, setflag] = useState(true)
     const [size, setsize] = useState("10%");
 
     const handleClicked = async () => {
+        setinputarea(true); 
         if (flag) {
             const current = editorRef.current.display.wrapper.style.height = '440px';
             setsize('35%');
@@ -79,8 +81,8 @@ function Editor({ socketRef, onCodeChange, roomId }) {
         editorRef.current = codemirror.fromTextArea(
             document.getElementById('realtimeEditor'),
             {
-                mode: `javascript`,
-                theme: 'ayu-dark',
+                mode: `text/x-c++src`,
+                theme: 'material-darker',
                 autoCloseTags: true,
                 autoCloseBrackets: true,
                 lineNumbers: true,
@@ -151,7 +153,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
     const [userInput, setUserInput] = useState('');
     const [userOutput, setUserOutput] = useState('');
     const [loading, setLoading] = useState(true);
-
+    
     const defaultOption = language[0];
 
 
@@ -162,7 +164,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
     }
     // console.log(mode);
 
-    const submitCode = async() => {
+    const submitCode = async () => {
         console.log('submit');
         await Axios.post(`http://localhost:3001/compile`, {
             code: editorRef.current.getValue(),
@@ -170,12 +172,12 @@ function Editor({ socketRef, onCodeChange, roomId }) {
             input: userInput
         }).then((res) => {
             setUserOutput(res.data.output);
+            setinputarea(false); 
         }).then(() => {
             setLoading(false);
         })
         console.log(userOutput);
     }
-
     return (
         <>
             <div className="heading" >
@@ -183,7 +185,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
                 <div className="langaugeselector">
                     <Tooltip title="Choose Your Language" TransitionComponent={Zoom} placement='top'>
 
-                        <HelpOutlinedIcon style={{ marginTop: '7px', backgroundColor: 'white', fontWeight: 'lighter', borderRadius: '50px', marginLeft: '5px' }}>
+                        <HelpOutlinedIcon style={{ marginTop: '7px', backgroundColor: 'white', borderRadius: '20px', marginLeft: '5px' }}>
 
                         </HelpOutlinedIcon>
 
@@ -198,7 +200,7 @@ function Editor({ socketRef, onCodeChange, roomId }) {
                 </div>
                 <div className="settings" >
                     <Tooltip title="Editor Settings" TransitionComponent={Zoom} placement='top'>
-                        <SettingsIcon data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ height: '20px', width: '20px', color: '#ffc107' }} />
+                        <SettingsIcon data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ height: '20px', width: '20px', color: 'white' }} />
 
                     </Tooltip>
                     <Modal settheme={settheme} settabsize={settabsize} flag={flag2} setflag={setflag2} editorRef={editorRef} />
@@ -220,24 +222,25 @@ function Editor({ socketRef, onCodeChange, roomId }) {
                             </div> */}
                     {!flag && <div className='testareaoutput'>
                         <div className="testout">
-                            <div className="testarea"></div>
-                            <div className="output"></div>
+                            <div className="testarea" onClick={()=>setinputarea(true)}>
+                                Testcase
+                            </div>
+                            <div className="output" onClick={()=>setinputarea(false)}>
+                                Test case output
+                            </div>
                         </div>
-                        <textarea className="textarea">
+                        {inputarea && <textarea className="input__textarea" onChange={(e)=>setUserInput(e.target.value)} value = {userInput}/>}
+                        {!inputarea && <textarea className="output__textarea"disabled value={userOutput} style = {{backgroundColor:'white'}}/>}
 
-                        </textarea>
                     </div>}
                     <div className="mainfooter" style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                        <Button onClick={handleClicked} className="Console" style={{ width: '80px', height: '20px' }}>
+                        <Button onClick={handleClicked} className="Console">
                             Console
                         </Button>
-                        <div className="submitandtest">
-                            <Button className="submit" >
+                        <div className="Code__run">
+                            <Button className="submit" onClick={submitCode} >
                                 <ArrowRightIcon /> Run Code
-                            </Button>
-                            <Button className="submit" onClick={submitCode}>
-                                Submit
                             </Button>
                         </div>
 
