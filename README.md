@@ -1,4 +1,9 @@
 <<<<<<< HEAD
+#Description 
+
+This website is built using socket.io which enables people to share common room to code together and also explain problems using the whiteboard. This project was mainly built to make the interview process smooth as the socket.io enables real time code sharing. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
